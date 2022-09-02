@@ -21,6 +21,10 @@ const rollDiceBtn = document.querySelector('.btn--roll');
 const newGameBtn = document.querySelector('.btn--new');
 const holdBtn = document.querySelector('.btn--hold');
 
+// manipulating active player style
+const playerStyleE1 = document.querySelector('.player--0');
+const playerStyleE2 = document.querySelector('.player--1');
+
 rollDiceBtn.addEventListener('click', () => {
   // 1 generate random number
   const rollDice = Math.trunc(Math.random() * 6) + 1;
@@ -40,6 +44,10 @@ rollDiceBtn.addEventListener('click', () => {
   // if number is 1 then chnaging the player
   else {
     // switch the player
-    activePlayer === 0 ? 1 : 0;
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    playerStyleE1.classList.toggle('player--active');
+    playerStyleE2.classList.toggle('player--active');
   }
 });
