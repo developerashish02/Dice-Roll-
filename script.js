@@ -67,7 +67,7 @@ holdBtn.addEventListener('click', () => {
       scores[activePlayer];
 
     // player win the game
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
       playing = false;
       console.log('paying condition', playing);
       document
