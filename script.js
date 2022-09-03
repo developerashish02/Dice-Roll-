@@ -8,7 +8,7 @@ const currentE1 = document.getElementById('current--0');
 const currentE2 = document.getAnimations('current--1');
 let currentScore = 0;
 let activePlayer = 0;
-const scores = [0, 0];
+let scores = [0, 0];
 
 score1E1.textContent = 0;
 score2E2.textContent = 0;
@@ -67,7 +67,7 @@ holdBtn.addEventListener('click', () => {
       scores[activePlayer];
 
     // player win the game
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 10) {
       playing = false;
       console.log('paying condition', playing);
       document
@@ -78,4 +78,29 @@ holdBtn.addEventListener('click', () => {
       switchPlayer();
     }
   }
+});
+
+// start new game
+newGameBtn.addEventListener('click', () => {
+  // reset the total score of two player
+  scores[0] = 0;
+  scores[1] = 0;
+  score1E1.textContent = scores[0];
+  score2E2.textContent = scores[1];
+
+  // current score  reset
+  currentScore = 0;
+  currentE1.textContent = currentScore;
+  currentE2.textContent = currentScore;
+
+  // remove winner player background color
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--winner');
+
+  // switch existing player
+  switchPlayer();
+
+  // Again start the game
+  playing = true;
 });
